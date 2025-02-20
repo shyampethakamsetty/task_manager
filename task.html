@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>TO DO LIST</h1>
+    <h3>Todays Programs</h3>
+
+<div id="programs">
+    <input type="text" id="programInput" placeholder="Add a new program...">
+    <button onclick="addProgram()">Add Program</button>
+
+    <ul id="programList"></ul>
+</div>
+
+<br>
+<a href="index.html">logout</a>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        loadTasks();
+    });
+    
+    function addProgram() {
+        var input = document.getElementById("programInput").value;
+        if (input) {
+            fetch('add_task.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'task=' + encodeURIComponent(input)
+            }).then(response => response.text())
+            .then(data => {
+                loadTasks(); 
+            });
+    
+            document.getElementById("programInput").value = "";
+        }
+    }
+    
+    function loadTasks() {
+        fetch('fetch_tasks.php')
+        .then(response => response.json())
+        .then(data => {
+            var programList = document.getElementById("programList");
+            programList.innerHTML = "";
+            data.forEach(task => {
+                var li = document.createElement("li");
+    
+                // Format timestamp
+                var date = new Date(task.created_at);
+                var formattedDate = date.toLocaleString(); // Converts timestamp to readable format
+    
+                li.innerHTML = `<strong>${task.task}</strong> <br> <small>${formattedDate}</small>`;
+    
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = function() {
+                    deleteTask(task.id);
+                };
+                
+                li.appendChild(deleteButton);
+                programList.appendChild(li);
+            });
+        });
+    }
+    
+    function deleteTask(taskId) {
+        fetch('delete_task.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'id=' + taskId
+        }).then(response => response.text())
+        .then(data => {
+            loadTasks(); 
+        });
+    }
+    </script>
+    
+    
+
+</body>
+</html>

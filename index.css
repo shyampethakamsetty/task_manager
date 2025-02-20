@@ -1,0 +1,104 @@
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light background for better contrast */
+    color: #333; /* Dark text for readability */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height */
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #4a90e2; /* A nice blue color */
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #7b7b7b; /* A softer gray color */
+}
+
+/* Programs Section */
+#programs {
+    background-color: white; /* White background for the program section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Inner spacing */
+    width: 300px; /* Fixed width */
+    text-align: center; /* Center text */
+}
+
+/* Input Field Styles */
+input[type="text"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Inner spacing */
+    margin-bottom: 10px; /* Spacing below input */
+    border: 2px solid #4a90e2; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    transition: border-color 0.3s; /* Smooth transition */
+}
+
+input[type="text"]:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px; /* Inner spacing */
+    background-color: #4a90e2; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #007bff; /* Darker blue on hover */
+}
+
+/* List Styles */
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin-top: 10px; /* Space above the list */
+}
+
+li {
+    display: flex; /* Flex display for list items */
+    justify-content: space-between; /* Space between item text and button */
+    align-items: center; /* Center align items */
+    padding: 10px; /* Inner spacing */
+    border-bottom: 1px solid #e0e0e0; /* Light gray border */
+}
+
+li:last-child {
+    border-bottom: none; /* Remove border for last item */
+}
+
+/* Delete Button Styles */
+li button {
+    background-color: #e74c3c; /* Red color for delete button */
+    padding: 5px 10px; /* Inner spacing */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+    color: white; /* White text color */
+}
+
+li button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
